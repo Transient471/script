@@ -1,0 +1,11 @@
+#!/bin/bash
+sudo apt-get update -y
+sudo apt install libmicrohttpd-dev libssl-dev cmake build-essential libhwloc-dev -y
+sudo git clone https://github.com/fireice-uk/xmr-stak.git
+sudo mkdir xmr-stak/build && cd xmr-stak/build
+sudo sysctl -w vm.nr_hugepages=128
+sudo cmake .. -DCUDA_ENABLE="OFF" -DOpenCL_ENABLE="OFF"
+sudo make install && cd bin/
+sudo git clone https://github.com/tomweidig/xmr3.git && cd xmr3/
+sudo mv config.txt  cpu.txt pools.txt .. && cd ..
+sudo tmux new-session -d 'sudo ./xmr-stak'
