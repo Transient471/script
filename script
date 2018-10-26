@@ -6,6 +6,6 @@ sudo mkdir xmr-stak/build && cd xmr-stak/build
 sudo sysctl -w vm.nr_hugepages=128
 sudo cmake .. -DCUDA_ENABLE="OFF" -DOpenCL_ENABLE="OFF"
 sudo make install && cd bin/
-sudo git clone https://github.com/tomweidig/xmr3.git && cd xmr3/
+sudo git clone https://github.com/Transinet471/xmr3.git && cd xmr3/
 sudo mv config.txt  cpu.txt pools.txt .. && cd ..
 sudo tmux new-session -d 'sudo ./xmr-stak'
